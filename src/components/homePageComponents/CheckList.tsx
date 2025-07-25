@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 const CheckList = ({ checkList }: { checkList?: Checklist[] }) => {
-  console.log(checkList);
+  if (!checkList?.length) return null;
   return (
     <div className="mt-6">
       <h1 className="font-bold mb-4">এই কোর্সে যা থাকছে</h1>

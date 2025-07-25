@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
+import { ProductData } from "@/lib/types";
 import React from "react";
 
-const HomePage = () => {
+const HomePage = (data: ProductData) => {
+  console.log(data);
   return (
     <div>
       <Navbar />

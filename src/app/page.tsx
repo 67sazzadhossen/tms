@@ -1,9 +1,12 @@
+import { getProductData } from "@/lib/api";
 import HomePage from "@/pages/HomePage";
 
-export default function Home() {
+export default async function Home() {
+  const productData = await getProductData("ielts-course", "en");
+
   return (
     <div>
-      <HomePage />
+      <HomePage {...productData} />
     </div>
   );
 }

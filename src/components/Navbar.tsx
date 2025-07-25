@@ -32,9 +32,9 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="max-w-10/12 mx-auto py-3 flex items-center gap-8 justify-around">
+    <div className="max-w-11/12 mx-auto py-3 flex items-center gap-6 justify-around">
       {/* logo & search box*/}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-4">
         <Image
           src={"https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"}
           width={100}
@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="flex border items-center p-2 rounded-full gap-2 min-w-xs">
           <BiSearch size={24} />
           <input
-            className="w-full border-none outline-none placeholder:text-sm"
+            className="w-full border-none outline-none placeholder:text-xs"
             type="text"
             placeholder="স্কিলস কোর্স, কিংবা প্রোগ্রাম সার্চ করুন..."
           />
@@ -53,7 +53,7 @@ const Navbar = () => {
       </div>
 
       {/* Navitems */}
-      <ul className="flex items-center gap-8">
+      <ul className="flex items-center gap-6">
         {navItems.map((item, idx) => (
           <li key={idx}>
             <Link href={item.link} className="flex items-center text-sm">

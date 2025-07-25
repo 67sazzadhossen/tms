@@ -1,4 +1,5 @@
 "use client";
+
 import { Media } from "@/lib/types";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
@@ -12,7 +13,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const DEFAULT_THUMBNAIL =
   "https://cdn.10minuteschool.com/images/thumbnails/IELTS_new_16_9.png";
 
-const ProductTrailer = ({ media }: { media: Media[] }) => {
+const ProductTrailer = ({ media = [] }: { media?: Media[] }) => {
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
   const [thumbsSwiper, setThumbsSwiper] = useState<
     import("swiper").Swiper | null
@@ -30,7 +31,6 @@ const ProductTrailer = ({ media }: { media: Media[] }) => {
     <div className="relative">
       {/* Main Swiper */}
       <div className="relative">
-        {/* Navigation Buttons - Centered */}
         <div className="absolute inset-0 z-10 flex items-center justify-between px-8 pointer-events-none">
           <button
             ref={prevRef}
@@ -65,105 +65,121 @@ const ProductTrailer = ({ media }: { media: Media[] }) => {
           }}
           className="mb-4"
         >
-          {media.map((item, idx) => {
-            const isThisVideoPlaying = playingVideoId === item.resource_value;
-            const thumbnailUrl = item.thumbnail_url || DEFAULT_THUMBNAIL;
+          {media.length === 0 ? (
+            <SwiperSlide>
+              <Image
+                src={DEFAULT_THUMBNAIL}
+                alt="Default Thumbnail"
+                width={800}
+                height={400}
+                className="rounded-lg"
+              />
+            </SwiperSlide>
+          ) : (
+            media.map((item, idx) => {
+              const isThisVideoPlaying = playingVideoId === item.resource_value;
+              const thumbnailUrl = item.thumbnail_url || DEFAULT_THUMBNAIL;
 
-            return (
-              <SwiperSlide key={idx}>
-                <div>
-                  {item.resource_type === "video" ? (
-                    <div className="rounded-lg shadow-lg">
-                      <div
-                        className="relative w-full rounded-lg overflow-hidden"
-                        style={{ paddingBottom: "56.25%" }}
-                      >
-                        {!isThisVideoPlaying ? (
-                          <div
-                            className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 cursor-pointer group"
-                            onClick={() => handlePlayClick(item.resource_value)}
-                          >
-                            <Image
-                              src={thumbnailUrl}
-                              alt={`Video Thumbnail for ${item.name}`}
-                              fill
-                              className="object-cover"
-                              onError={(e) => {
-                                (e.currentTarget as HTMLImageElement).src =
-                                  DEFAULT_THUMBNAIL;
-                              }}
-                            />
-                            <svg
-                              className="relative z-10 w-20 h-20 text-white transition-transform duration-300 group-hover:scale-110"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
+              return (
+                <SwiperSlide key={idx}>
+                  <div>
+                    {item.resource_type === "video" ? (
+                      <div className="rounded-lg shadow-lg">
+                        <div
+                          className="relative w-full rounded-lg overflow-hidden"
+                          style={{ paddingBottom: "56.25%" }}
+                        >
+                          {!isThisVideoPlaying ? (
+                            <div
+                              className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 cursor-pointer group"
+                              onClick={() =>
+                                handlePlayClick(item.resource_value)
+                              }
                             >
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                            <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-                          </div>
-                        ) : (
-                          <iframe
-                            className="absolute top-0 left-0 w-full h-full rounded-lg"
-                            src={`https://www.youtube.com/embed/${item.resource_value}?autoplay=1&rel=0`}
-                            title={`Video Trailer for ${item.name}`}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                        )}
+                              <Image
+                                src={thumbnailUrl}
+                                alt={`Video Thumbnail for ${item.name}`}
+                                fill
+                                className="object-cover"
+                                onError={(e) => {
+                                  (e.currentTarget as HTMLImageElement).src =
+                                    DEFAULT_THUMBNAIL;
+                                }}
+                              />
+                              <svg
+                                className="relative z-10 w-20 h-20 text-white transition-transform duration-300 group-hover:scale-110"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
+                              <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                            </div>
+                          ) : (
+                            <iframe
+                              className="absolute top-0 left-0 w-full h-full rounded-lg"
+                              src={`https://www.youtube.com/embed/${item.resource_value}?autoplay=1&rel=0`}
+                              title={`Video Trailer for ${item.name}`}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            ></iframe>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <Image
-                      src={thumbnailUrl}
-                      alt={item.name}
-                      width={800}
-                      height={400}
-                      className="rounded-lg"
-                    />
-                  )}
-                </div>
-              </SwiperSlide>
-            );
-          })}
+                    ) : (
+                      <Image
+                        src={thumbnailUrl}
+                        alt={item.name}
+                        width={800}
+                        height={400}
+                        className="rounded-lg"
+                      />
+                    )}
+                  </div>
+                </SwiperSlide>
+              );
+            })
+          )}
         </Swiper>
       </div>
 
       {/* Thumbnails Swiper */}
-      <div className="mt-4 ">
-        <Swiper
-          modules={[Thumbs]}
-          onSwiper={setThumbsSwiper}
-          slidesPerView={Math.min(media.length, 6)}
-          spaceBetween={10}
-          watchSlidesProgress
-        >
-          {media.map((item, idx) => {
-            const thumbnailUrl = item.thumbnail_url || DEFAULT_THUMBNAIL;
+      {media.length > 1 && (
+        <div className="mt-4">
+          <Swiper
+            modules={[Thumbs]}
+            onSwiper={setThumbsSwiper}
+            slidesPerView={Math.min(media.length, 6)}
+            spaceBetween={10}
+            watchSlidesProgress
+          >
+            {media.map((item, idx) => {
+              const thumbnailUrl = item.thumbnail_url || DEFAULT_THUMBNAIL;
 
-            return (
-              <SwiperSlide key={idx}>
-                <div
-                  className={`border-2 rounded-md ${
-                    idx === activeIndex
-                      ? "border-blue-500"
-                      : "border-transparent"
-                  } transition duration-200`}
-                >
-                  <Image
-                    src={thumbnailUrl}
-                    alt={`Thumbnail ${idx + 1}`}
-                    width={130}
-                    height={60}
-                    className="rounded-md cursor-pointer hover:opacity-80"
-                  />
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
+              return (
+                <SwiperSlide key={idx}>
+                  <div
+                    className={`border-2 rounded-md ${
+                      idx === activeIndex
+                        ? "border-blue-500"
+                        : "border-transparent"
+                    } transition duration-200`}
+                  >
+                    <Image
+                      src={thumbnailUrl}
+                      alt={`Thumbnail ${idx + 1}`}
+                      width={130}
+                      height={60}
+                      className="rounded-md cursor-pointer hover:opacity-80"
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      )}
     </div>
   );
 };

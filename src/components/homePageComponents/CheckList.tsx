@@ -2,7 +2,7 @@ import { Checklist } from "@/lib/types";
 import Image from "next/image";
 import React from "react";
 
-const CheckList = ({ checkList }: { checkList: Checklist[] }) => {
+const CheckList = ({ checkList }: { checkList?: Checklist[] }) => {
   console.log(checkList);
   return (
     <div className="mt-6">

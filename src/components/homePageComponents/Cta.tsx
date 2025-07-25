@@ -1,11 +1,11 @@
 import { ProductData } from "@/lib/types";
 import React from "react";
 
-const Cta = ({ data }: { data: ProductData }) => {
+const Cta = ({ data }: { data?: ProductData }) => {
   return (
     <div>
       <button className="w-full bg-green-700 text-white py-2 px-4 rounded">
-        {data.cta_text.name}
+        {data?.cta_text.name}
       </button>
     </div>
   );

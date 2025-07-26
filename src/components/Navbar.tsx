@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { BiPhone, BiSearch } from "react-icons/bi";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import LanguageSwitcher from "./shared/LanguageSwitcher";
 
 const Navbar = () => {
   const navItems = [
@@ -66,7 +67,8 @@ const Navbar = () => {
 
       {/* language toggle, help-center, login */}
       <div className="flex items-center gap-4 text-green-600 font-semibold">
-        <button className="btn btn-sm bg-transparent font-md">বাং</button>
+        {/* <button className="btn btn-sm bg-transparent font-md">বাং</button> */}
+        <LanguageSwitcher />
         <button className="flex items-center gap-1">
           <BiPhone />
           16910

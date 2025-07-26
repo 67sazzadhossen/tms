@@ -18,7 +18,7 @@ const ExclusiveFeature = ({
           return (
             <div
               key={idx}
-              className={`flex justify-between gap-6 py-6 border-gray-200 ${
+              className={`flex flex-col-reverse md:flex-row justify-between gap-6 py-6 border-gray-200 ${
                 !isLast ? "border-b" : ""
               }`}
             >
@@ -34,6 +34,7 @@ const ExclusiveFeature = ({
                   alt="image"
                   width={200}
                   height={200}
+                  className="mx-auto"
                 />
               </div>
             </div>

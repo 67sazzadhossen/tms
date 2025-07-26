@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BiPhone, BiSearch } from "react-icons/bi";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdMenu } from "react-icons/md";
 import LanguageSwitcher from "./shared/LanguageSwitcher";
 
 const Navbar = () => {
@@ -33,20 +33,27 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="max-w-11/12 mx-auto py-3 flex items-center gap-6 justify-around">
+    <div className="md:max-w-11/12 mx-auto py-3 flex items-center gap-6 justify-between md:justify-around px-3 md:px-0">
       {/* logo & search box*/}
       <div className="flex items-center gap-4">
-        <Image
-          src={"https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"}
-          width={100}
-          height={80}
-          alt="logo"
-        />
+        <div className="w-full flex items-center gap-1">
+          <span className="text-2xl md:hidden">
+            <MdMenu />
+          </span>
+          <Image
+            src={"https://cdn.10minuteschool.com/images/svg/10mslogo-svg.svg"}
+            width={100}
+            height={80}
+            alt="logo"
+          />
+        </div>
 
-        <div className="flex border items-center p-2 rounded-full gap-2 min-w-xs">
-          <BiSearch size={24} />
+        <div className=" md:border items-center p-2 rounded-full gap-2 md:min-w-sm hidden md:flex">
+          <span className="md:text-2xl text-sm">
+            <BiSearch />
+          </span>
           <input
-            className="w-full border-none outline-none placeholder:text-xs"
+            className="w-full border-none outline-none placeholder:text-xs "
             type="text"
             placeholder="স্কিলস কোর্স, কিংবা প্রোগ্রাম সার্চ করুন..."
           />
@@ -54,7 +61,7 @@ const Navbar = () => {
       </div>
 
       {/* Navitems */}
-      <ul className="flex items-center gap-6">
+      <ul className=" items-center gap-6 hidden lg:flex">
         {navItems.map((item, idx) => (
           <li key={idx}>
             <Link href={item.link} className="flex items-center text-sm">
@@ -66,14 +73,18 @@ const Navbar = () => {
       </ul>
 
       {/* language toggle, help-center, login */}
-      <div className="flex items-center gap-4 text-green-600 font-semibold">
-        {/* <button className="btn btn-sm bg-transparent font-md">বাং</button> */}
-        <LanguageSwitcher />
+      <div className="flex items-center md:gap-4 gap-1 text-green-600 font-semibold">
+        <div className="hidden md:block">
+          <LanguageSwitcher />
+        </div>
+        <span className="md:text-2xl text-sm md:hidden">
+          <BiSearch />
+        </span>
         <button className="flex items-center gap-1">
           <BiPhone />
-          16910
+          <span className="hidden md:block"> 16910</span>
         </button>
-        <button className="bg-green-600 text-white btn btn-sm px-6">
+        <button className="bg-green-600 text-white btn btn-xs md:btn-sm md:px-6">
           লগ-ইন
         </button>
       </div>

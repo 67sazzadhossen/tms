@@ -8,7 +8,7 @@ const Instructors = ({ instructors }: { instructors?: InstructorsSection }) => {
   return (
     <div className="my-8">
       <NameHeading title={instructors?.name} />
-      <div>
+      <div className="">
         {instructors?.values?.map((item, idx) => (
           <div
             key={idx}

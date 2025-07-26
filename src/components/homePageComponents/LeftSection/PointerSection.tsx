@@ -11,7 +11,7 @@ const PointerSection = ({
   return (
     <div>
       <NameHeading title={pointerSectionData?.name} />
-      <div className="grid grid-cols-2 gap-6 border border-gray-200 p-6 rounded-2xl">
+      <div className="grid md:grid-cols-2 gap-6 border border-gray-200 p-6 rounded-2xl">
         {pointerSectionData?.values?.map((item, idx) => (
           <CheckListItem checkItem={item.text} key={idx} />
         ))}

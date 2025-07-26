@@ -21,14 +21,14 @@ const LanguageSwitcher = () => {
       {currentLang === "bn" ? (
         <button
           onClick={() => handleLanguageChange("en")}
-          className="btn btn-sm bg-transparent font-md"
+          className="btn btn-xs md:btn-sm bg-transparent font-md"
         >
           En
         </button>
       ) : (
         <button
           onClick={() => handleLanguageChange("bn")}
-          className="btn btn-sm bg-transparent font-md"
+          className="btn btn-xs md:btn-sm bg-transparent font-md"
         >
           বাং
         </button>

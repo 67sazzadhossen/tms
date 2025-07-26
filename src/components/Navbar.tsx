@@ -74,7 +74,7 @@ const Navbar = () => {
 
       {/* language toggle, help-center, login */}
       <div className="flex items-center md:gap-4 gap-1 text-green-600 font-semibold">
-        <div className="hidden md:block">
+        <div className="">
           <LanguageSwitcher />
         </div>
         <span className="md:text-2xl text-sm md:hidden">

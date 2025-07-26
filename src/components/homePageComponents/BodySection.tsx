@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  AboutSection,
   FeatureExplanationSection,
   FeaturesSection,
   InstructorsSection,
@@ -14,6 +15,7 @@ import Instructors from "./LeftSection/Instructors";
 import CourseStructure from "./LeftSection/CourseStructure";
 import PointerSection from "./LeftSection/PointerSection";
 import ExclusiveFeature from "./LeftSection/ExclusiveFeature";
+import AboutCourseSection from "./LeftSection/AboutCourseSection";
 
 const BodySection = ({ data }: { data: ProductData }) => {
   const instructors = data?.sections?.find(
@@ -31,8 +33,9 @@ const BodySection = ({ data }: { data: ProductData }) => {
   const exclusiveFeatureData = data?.sections?.find(
     (item) => item.type === "feature_explanations"
   ) as FeatureExplanationSection;
-
-  console.log(exclusiveFeatureData);
+  const aboutCourseSectionData = data?.sections?.find(
+    (item) => item.type === "about"
+  ) as AboutSection;
 
   return (
     <div className="flex max-w-9/12 mx-auto">
@@ -43,6 +46,7 @@ const BodySection = ({ data }: { data: ProductData }) => {
         <CourseStructure courseStructure={courseStructure} />
         <PointerSection pointerSectionData={pointerSectionData} />
         <ExclusiveFeature exclusiveFeatureData={exclusiveFeatureData} />
+        <AboutCourseSection aboutCourseSectionData={aboutCourseSectionData} />
       </div>
 
       {/* right side */}

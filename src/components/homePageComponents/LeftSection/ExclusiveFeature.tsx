@@ -1,8 +1,8 @@
 import NameHeading from "@/components/shared/NameHeading";
 import { FeatureExplanationSection } from "@/lib/types";
 import React from "react";
-import { IoCheckmarkSharp } from "react-icons/io5";
 import Image from "next/image";
+import CheckListItem from "@/components/shared/CheckListItem";
 
 const ExclusiveFeature = ({
   exclusiveFeatureData,
@@ -24,16 +24,8 @@ const ExclusiveFeature = ({
             >
               <div>
                 <h1 className="my-3">{item.title}</h1>
-                {item?.checklist?.map((checkItem, cidx) => (
-                  <div key={cidx}>
-                    <div className="flex gap-2">
-                      <span className="text-blue-400">
-                        {" "}
-                        <IoCheckmarkSharp />
-                      </span>
-                      {checkItem}
-                    </div>
-                  </div>
+                {item?.checklist?.map((checkItem, idx) => (
+                  <CheckListItem checkItem={checkItem} key={idx} />
                 ))}
               </div>
               <div>

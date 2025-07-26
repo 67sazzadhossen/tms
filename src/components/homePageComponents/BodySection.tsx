@@ -1,28 +1,48 @@
 import React from "react";
-import { FeaturesSection, InstructorsSection, ProductData } from "@/lib/types";
+import {
+  FeatureExplanationSection,
+  FeaturesSection,
+  InstructorsSection,
+  PointersSection,
+  ProductData,
+} from "@/lib/types";
 import { BiPhoneCall } from "react-icons/bi";
 import Cta from "./RightSection/Cta";
 import CheckList from "./RightSection/CheckList";
 import Tabs from "./LeftSection/Tabs";
 import Instructors from "./LeftSection/Instructors";
 import CourseStructure from "./LeftSection/CourseStructure";
+import PointerSection from "./LeftSection/PointerSection";
+import ExclusiveFeature from "./LeftSection/ExclusiveFeature";
 
 const BodySection = ({ data }: { data: ProductData }) => {
-  const instructors = data.sections.find(
+  const instructors = data?.sections?.find(
     (item) => item.type === "instructors"
   ) as InstructorsSection;
 
-  const courseStructure = data.sections.find(
+  const courseStructure = data?.sections?.find(
     (item) => item.type === "features"
   ) as FeaturesSection;
+
+  const pointerSectionData = data?.sections?.find(
+    (item) => item.type === "pointers"
+  ) as PointersSection;
+
+  const exclusiveFeatureData = data?.sections?.find(
+    (item) => item.type === "feature_explanations"
+  ) as FeatureExplanationSection;
+
+  console.log(exclusiveFeatureData);
 
   return (
     <div className="flex max-w-9/12 mx-auto">
       {/* left side */}
       <div className="w-8/12 pr-9">
-        <Tabs sections={data.sections} />
+        <Tabs sections={data?.sections} />
         <Instructors instructors={instructors} />
         <CourseStructure courseStructure={courseStructure} />
+        <PointerSection pointerSectionData={pointerSectionData} />
+        <ExclusiveFeature exclusiveFeatureData={exclusiveFeatureData} />
       </div>
 
       {/* right side */}

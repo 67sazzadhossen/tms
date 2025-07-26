@@ -1,14 +1,14 @@
 "use client";
 
-import { ProductData } from "@/lib/types";
+import { Section } from "@/lib/types";
 import React, { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const Tabs = ({ data }: { data?: ProductData }) => {
+const Tabs = ({ sections }: { sections?: Section[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
-    if (!data) return null;
+    if (!sections) return null;
     if (containerRef.current) {
       const scrollAmount = 150;
       containerRef.current.scrollBy({
@@ -25,12 +25,12 @@ const Tabs = ({ data }: { data?: ProductData }) => {
         ref={containerRef}
         className="flex relative gap-4 overflow-x-auto scroll-smooth border-b border-gray-300  py-2 pt-4 custom-scrollbar mx-10 "
       >
-        {data?.sections.map((item, idx) => (
+        {sections?.map((item, idx) => (
           <div
             key={idx}
             className="whitespace-nowrap  text-sm font-medium text-gray-800 cursor-pointer hover:text-blue-600"
           >
-            {item.name}
+            {item?.name}
           </div>
         ))}
       </div>

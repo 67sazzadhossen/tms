@@ -47,11 +47,20 @@ export interface OfferValue {
 
 export interface InstructorValue {
   description: string;
-  has_instructor_page: boolean;
   image: string;
   name: string;
   short_description: string;
   slug: string;
+  has_instructor_page: boolean;
+}
+
+export interface InstructorsSection {
+  type: "instructors";
+  name: string;
+  description: string;
+  bg_color: string;
+  order_idx: number;
+  values: InstructorValue[];
 }
 
 export interface FeatureValue {
@@ -59,6 +68,15 @@ export interface FeatureValue {
   id: string;
   subtitle: string;
   title: string;
+}
+
+export interface FeaturesSection {
+  type: "features";
+  name: string;
+  description: string;
+  bg_color: string;
+  order_idx: number;
+  values: FeatureValue[];
 }
 
 export interface Background {

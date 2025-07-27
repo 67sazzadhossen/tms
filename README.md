@@ -1,37 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IELTS Course Product Page
+
+This is a Next.js project implementing a product page for the **IELTS Course by Munzereen Shahid**.  
+The page is built based on the provided API, wireframe, and requirements from 10 Minute School Frontend Engineer (Level 1) assessment.
+
+---
+
+## Live Demo
+
+[https://tms-one-tawny.vercel.app/](https://tms-one-tawny.vercel.app/)
+
+---
+
+## Features
+
+- Server-side rendering (SSR) with Next.js
+- TypeScript for type safety
+- TailwindCSS for styling and responsive design
+- Localization support (`en` and `bn` languages)
+- Fetches product data from 10 Minute School public API with SEO headers
+- Displays:
+  - Product title
+  - Description (rendered from HTML string)
+  - Course instructors (from `sections` with type `instructor`)
+  - Product trailer (YouTube embedded player from `media`)
+  - Course price (defaulted to 1000 as per requirement)
+  - CTA button with dynamic text
+  - Course layout, learning pointers, exclusive features, course details, and checklist (optional sections)
+- Incremental Static Regeneration (ISR) enabled for fast page updates
+- SEO optimized metadata fetched from API
+- Modular, reusable React components with code splitting
+
+---
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) (React Framework)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- React Player for embedded YouTube videos
+- Axios for HTTP requests
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- npm or yarn package manager
+
+### Installation
 
 ```bash
+git clone https://github.com/yourusername/ielts-course-product-page.git
+cd ielts-course-product-page
+npm install
+# or
+yarn install
+
+# Running Locally
+
+Copy
+Edit
 npm run dev
 # or
 yarn dev
+
+
+# Building for Production
+
+Copy
+Edit
+npm run build
+npm start
 # or
-pnpm dev
-# or
-bun dev
+yarn build
+yarn start
+
+
+# API Details
+Endpoint: https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course
+
+Headers:
+
+X-TENMS-SOURCE-PLATFORM: web
+
+accept: application/json
+
+The API provides all the necessary data, including SEO metadata, product sections, media, checklist, and CTA text.
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# tms

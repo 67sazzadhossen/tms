@@ -5,7 +5,7 @@ const CheckListItem = ({ checkItem }: { checkItem: string }) => {
   return (
     <div>
       <div className="flex gap-2">
-        <span className="text-blue-400">
+        <span className="text-blue-400 text-xl mt-1">
           {" "}
           <IoCheckmarkSharp />
         </span>

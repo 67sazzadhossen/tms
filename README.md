@@ -38,7 +38,7 @@ The page is built based on the provided API, wireframe, and requirements from 10
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - React Player for embedded YouTube videos
-- Axios for HTTP requests
+- Native `fetch` API for HTTP requests
 
 ---
 

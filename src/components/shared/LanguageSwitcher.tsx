@@ -10,7 +10,7 @@ const LanguageSwitcher = () => {
   const pathname = usePathname();
 
   const currentLang = searchParams?.get("lang") ?? "en";
-  const [isPending, startTransition] = useTransition(); // built-in React transition for smoother UI
+  const [isPending, startTransition] = useTransition();
 
   const handleLanguageChange = (newLang: string) => {
     startTransition(() => {
